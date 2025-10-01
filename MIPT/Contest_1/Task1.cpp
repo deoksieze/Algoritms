@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 
+// Думаю, что было излишне писать эту структуры и операторы перегружать, но я
+// хотел попробовать
 struct Section {
   int left;
   int right;
@@ -15,7 +17,7 @@ struct Section {
 };
 
 using Pairs = std::vector<Section>;
-Pairs Merge(Pairs& arr1, Pairs& arr2) {
+Pairs Merge(Pairs arr1, Pairs arr2) {
   Pairs back(arr1.size() + arr2.size());
 
   size_t i1{};
@@ -47,7 +49,7 @@ Pairs Merge(Pairs& arr1, Pairs& arr2) {
   return back;
 }
 
-Pairs MergeSort(Pairs& arr) {
+Pairs MergeSort(Pairs arr) {
   if (arr.size() <= 1) {
     return arr;
   }
@@ -60,11 +62,8 @@ Pairs MergeSort(Pairs& arr) {
   }
 
   auto mid = arr.begin() + arr.size() / 2;
-  Pairs first(arr.begin(), mid);
-  Pairs second(mid, arr.end());
-  Pairs first_1 = MergeSort(first);
-  Pairs second_1 = MergeSort(second);
-  return Merge(first_1, second_1);
+  return Merge(MergeSort(Pairs(arr.begin(), mid)),
+               MergeSort(Pairs(mid, arr.end())));
 }
 
 int main() {
@@ -78,13 +77,13 @@ int main() {
     arr[i] = {l, r};
   }
 
-  auto great = MergeSort(arr);
+  auto sorted = MergeSort(arr);
 
   Pairs answer(n);
   size_t ind{0};
 
-  Section sec{great[0].left, great[0].right};
-  for (auto i : great) {
+  Section sec{sorted[0].left, sorted[0].right};
+  for (auto i : sorted) {
     if (sec.right < i.left) {
       answer[ind].left = sec.left;
       answer[ind].right = sec.right;
