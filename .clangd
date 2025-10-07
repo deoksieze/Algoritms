@@ -1,0 +1,11 @@
+CompileFlags:
+  # -fsized-deallocation for operator delete(ptr, count, align)
+  Add: [
+    -std=c++20,
+    -Wall,
+    -Wextra,
+    -pedantic,
+    -Werror,
+    -fsized-deallocation
+]
+  Compiler: clang++

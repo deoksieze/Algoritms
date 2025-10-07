@@ -1,0 +1,7 @@
+[
+  {
+    "directory": "/home/student/Algoritms/MIPT/Contest_1",
+    "command": "clang++ -std=c++17 -I. -I.. main.cpp -o main",
+    "file": "main.cpp"
+  }
+]
