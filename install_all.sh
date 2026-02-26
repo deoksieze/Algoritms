@@ -1,7 +1,6 @@
 #!/bin/bash
 
 EXTENSIONS=(
-"jock.svg"
 "mushan.vscode-paste-image"
 "naumovs.color-highlight"
 "shardulm94.trailing-spaces"
@@ -23,7 +22,7 @@ EXTENSIONS=(
 "yzhang.markdown-all-in-one"
 "streetsidesoftware.code-spell-checker"
 "streetsidesoftware.code-spell-checker-russian"
-"sanaajani.taskrunnercode" 
+"sanaajani.taskrunnercode"
 "visualstudioexptteam.intellicode-api-usage-examples"
 "visualstudioexptteam.vscodeintellicode"
 )
