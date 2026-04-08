@@ -6,7 +6,7 @@
 
 struct Edge {
   int to;
-  long long len;
+  long long time;
 };
 
 std::vector<long> d;
@@ -34,9 +34,9 @@ void DijkstraVirus(std::vector<int>& virus_start) {
     }
 
     for (auto e : g[v]) {
-      if (virus[v] + e.len < virus[e.to]) {
+      if (virus[v] + e.time < virus[e.to]) {
         q.erase({virus[e.to], e.to});
-        virus[e.to] = virus[v] + e.len;
+        virus[e.to] = virus[v] + e.time;
         q.insert({virus[e.to], e.to});
       }
     }
@@ -59,9 +59,9 @@ void DijkstraSurvivor(int s) {
     }
 
     for (auto e : g[v]) {
-      if (d[v] + e.len < virus[e.to] && d[v] + e.len < d[e.to]) {
+      if (d[v] + e.time < virus[e.to] && d[v] + e.time < d[e.to]) {
         q.erase({d[e.to], e.to});
-        d[e.to] = d[v] + e.len;
+        d[e.to] = d[v] + e.time;
         q.insert({d[e.to], e.to});
       }
     }

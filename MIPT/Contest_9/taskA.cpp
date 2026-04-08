@@ -11,7 +11,6 @@ struct Edge {
 };
 
 std::vector<int> d;
-std::vector<bool> used;
 std::vector<std::vector<Edge>> g;
 
 const int cInf = 2009000999;
@@ -47,7 +46,6 @@ void ProcessGen() {
   std::cin >> n >> m;
 
   g.assign(n, {});
-  used.assign(n, false);
 
   for (int i = 0; i < m; i++) {
     int v;
